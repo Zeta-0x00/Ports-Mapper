@@ -18,13 +18,12 @@ output=$(ping -c 1 $1 2>/dev/null)
 ttl_line=$(echo "$output" | grep -o "ttl=[0-9]*")
 
 ttl=$(echo "$ttl_line" | grep -o "[0-9]*")
-
-if [[ $ttl -le 128 && $ttl -gt 64 ]]; then
+if [[ $ttl -eq '' || $ttl -gt 128 ]]; then
+  echo "OS no reconocido, valor TTL = $ttl."
+elif [[ $ttl -le 128 && $ttl -gt 64 ]]; then
   echo "Posible Windows, TTL = $ttl ."
 elif [[ $ttl -le 64 ]]; then
   echo "Posible Unix/Linux, TTL = $ttl."
-else
-  echo "OS no reconocido, valor TTL = $ttl."
 fi
 
 
