@@ -78,7 +78,7 @@ elif [[ $ttl -le 64 ]]; then
 fi
 
 #ports mapper
-for i in  $(seq 1 100); do #65535
+for i in  $(seq 1 65535); do
   while [[ $Current -ge $Max ]]; do
     sleep 0.1
     Current=$(jobs -p | wc -l)
