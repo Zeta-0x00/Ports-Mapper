@@ -52,17 +52,11 @@ The reason for this tool is mainly to facilitate moments in security audits wher
 
 [✓] Port 80
 [✓] Port 53
-[✓] Port 27998
-[✓] Port 37443
-[✓] Port 37444
 
 [!] Identifying service...
 
 [!] Puerto 53 -> (domain) open
 [!] Puerto 80 -> (http) open
-[!] Puerto 27998 -> open
-[!] Puerto 37443 -> open
-[!] Puerto 37444 -> open
 
 [✓] Done
 
@@ -90,10 +84,11 @@ The reason for this tool is mainly to facilitate moments in security audits wher
 
 [✓] UDP scan
 
+[✓] Port 8080
 
 [!] Identifying service...
 
-[!] Puerto 8080 -> open
+[!] Puerto 8080 -> (http) open
 
 [✓] Done
 ```
