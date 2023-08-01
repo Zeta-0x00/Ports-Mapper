@@ -288,6 +288,17 @@ tput civis # hide cursor
   ports=$(cat "$cache" | sort -n | uniq | tr '\n' ' ' | sed 's/.$//') # read cache file and sort
   rm "$cache" 2>/dev/null # remove cache file
   
+  if [[ $service_identifier != "true" && $output != "" ]]; then
+    printf "\n${yellow}[!]${end} Exporting ports to file...\n\n"
+    if [[ $udp == "true" ]]; then
+      echo "$host -> UDP" >> "$output"
+    else
+      echo "$host -> TCP" >> "$output"
+    fi
+    echo "$ports" >> "$output"
+    printf "${green}[✓]${end} Done\n\t${purple}[!]${end} Ports exported in ${cyan}$output${end}\n\n"
+  fi
+
   # Process to identify service
   if [[ $service_identifier == "true" ]]; then
     printf "\n${yellow}[!]${end} Identifying service...\n\n"
@@ -309,6 +320,7 @@ tput civis # hide cursor
     else
       printf "\n${green}[✓]${end} Done\n\n"
   fi
+
   if [[ $copy == "true" ]]; then
     CopyPorts "$ports"
   fi
