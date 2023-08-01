@@ -123,7 +123,7 @@ Get_TTL()
   # Function: Get_TTL
   # Description: Get TTL from ping
   #######################
-  local output=$(ping -c 1 $1 2>/dev/null)
+  local output=$(timeout 1 ping -c 1 $1 2>/dev/null)
   local ttl=$(echo "$output" | grep -o "ttl=[0-9]*" | grep -o "[0-9]*")
   Identify_OS "$ttl"
 }
